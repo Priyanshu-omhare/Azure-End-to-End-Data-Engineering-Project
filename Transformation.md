@@ -21,10 +21,6 @@ To begin, I navigated to **Azure Databricks** and clicked on **Create**. Here ar
 I then clicked on **Review + Create** and deployed the workspace successfully.
 
 After deployment, I clicked on **Go to Resource**, which opened the **Databricks workspace** in a new tab.
-
-![image](https://github.com/user-attachments/assets/0b81800a-e358-4ab0-b586-73de13070b0c)
-
-  ![image](https://github.com/user-attachments/assets/a71f43cc-9de3-4c99-9eaf-061c553b9a44)
   
   
 ## Creating a Unity Metastore

@@ -1,8 +1,6 @@
 # My Azure Setup Walkthrough  
 
-I began by creating a **resource group** – a logical container to organize Azure services like databases and storage for my project. Named it `shayanathif-data-project`. While the name only needs to be unique within *my* Azure subscription (not globally), I still picked something descriptive. Selected **South India** as the region since it’s closest to me, which reduces latency.    
-<br>
-![image](https://github.com/user-attachments/assets/7c3b04b5-2239-4ef3-b765-34e981ed8f24)
+I began by creating a **resource group** – a logical container to organize Azure services like databases and storage for my project. Named it `shayanathif-data-project`. While the name only needs to be unique within *my* Azure subscription (not globally), I still picked something descriptive. Selected **South India** as the region since it’s closest to me, which reduces latency.
 
 
 ---
@@ -14,9 +12,6 @@ Next, I built a **data lake** by creating a storage account:
 3. Gave the storage account name as `shayanathifdatalake` (Must be unique;Azure enforces this).  
 4. Kept the region as **South India** for consistency.  
 5. Chose **Standard** performance (cost-effective) and **Locally Redundant Storage (LRS)** – stores 3 copies of data in one datacenter.
-
-
-![image](https://github.com/user-attachments/assets/7d5de955-0195-4d3f-8529-4d3498c7210a)
 <br>  
 *‼️‼️‼️ VERY VERY IMPORTANT ‼️‼️‼️*  
 Under the *Advanced* tab, I enabled **hierarchical namespace**. This is **critical** – without it, Azure creates a basic *Blob Storage* account instead of a data lake. Blob Storage is simpler, designed for unstructured files (images, documents), but lacks folder structures needed for analytics. Enabling hierarchical namespace converts it to **Azure Data Lake Gen2**, which organizes files into directories (like a traditional filesystem). Clicked *Review + Create* and finalized it.  
@@ -29,8 +24,6 @@ For automating data workflows, I created **Azure Data Factory**:
 2. Selected my resource group, name (`shayanathif-datafactory`) and region (**South India**).  
 3. Skipped advanced settings (kept defaults) and clicked *Create*.  
 This will later help orchestrate pipelines to move data between services.
-  
-![image](https://github.com/user-attachments/assets/36122e0c-6868-40c5-95ac-eaa3cd5d31ef)
 
 
 ---
@@ -48,9 +41,7 @@ This part was trickier. Here’s what I did:
 
 Under database configuration:  
 - **Workload Environment**: Selected *Development* (lower cost, limited performance – ideal for testing).  
-- **Backup Redundancy**: Chose *Locally Redundant (LRS)*. Other options:  
-    
-![image](https://github.com/user-attachments/assets/7024c274-2c0e-4bed-9c5b-87e8009bc703)
+- **Backup Redundancy**: Chose *Locally Redundant (LRS)*. Other options: 
 
 
 In *Networking*, enabled **Public Endpoint** for easy access (⚠️ risky for production but okay for short-term testing).  
@@ -59,9 +50,7 @@ In *Networking*, enabled **Public Endpoint** for easy access (⚠️ risky for p
 - 100,000 vCore seconds/month  
 - 32 GB database storage  
 - 32 GB backup storage  
-Without this, it would’ve cost ~474 INR/month.  
-  
-![image](https://github.com/user-attachments/assets/286a7bff-6ab8-41fa-9b98-e5bb05aee525)
+Without this, it would’ve cost ~474 INR/month. 
 
 Clicked *Review + Create*, finalized settings, and deployed.  
 
@@ -69,7 +58,6 @@ Clicked *Review + Create*, finalized settings, and deployed.
 
 ## **Final Setup**  
 Now that our setup is complete, let's review the resource group.  
-![image](https://github.com/user-attachments/assets/1ca69a28-91c9-4de1-9173-bd6ffe550547)
 
 
 Here, we can see the data lake, the data factory, databaseand the database server.
